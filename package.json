@@ -1,0 +1,26 @@
+{
+  "name": "test-warden-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-generated Playwright tests, reviewed by a deterministic Test Warden, against a synthetic home-care scheduling app.",
+  "type": "module",
+  "scripts": {
+    "app": "node app/server.js",
+    "app:slow": "CHAOS=slow node app/server.js",
+    "app:reseed": "CHAOS=reseed node app/server.js",
+    "app:broken": "CHAOS=broken node app/server.js",
+    "test": "playwright test",
+    "test:slow": "CHAOS=slow playwright test",
+    "test:reseed": "CHAOS=reseed playwright test",
+    "test:broken": "CHAOS=broken playwright test",
+    "report": "playwright show-report",
+    "test:race": "CHAOS=slow CHAOS_DELAY_MS=3000 playwright test",
+    "warden:review": "node warden/warden.ts review",
+    "warden:triage": "node warden/warden.ts triage"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2"
+  }
+}
